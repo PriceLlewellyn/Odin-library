@@ -8,6 +8,7 @@ function closeForm() {
     document.getElementById("myForm").style.display = "none"
 }
 
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -20,9 +21,12 @@ function Book(title, author, pages, read) {
     };
 }
 
-myLibrary.push(new Book);
-
-
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295 , false);
 console.log(theHobbit.info());
 
+myLibrary.push(theHobbit);
+console.log(myLibrary)
+
+//create event listner to capture form inputs
+//use them to create new book
+//display
