@@ -9,19 +9,23 @@
 <body>
     <div>
         <button class="open-button" onclick="openForm()">New Book</button>
-        <div>
-            <form>
+        <div class="form-popup" id="myForm">
+            <form class="form-container">
                 <p>New Book</p>
-                <label>Title of Book</label>
-                <input>
-                <label>Name of Author</label>
-                <input>
-                <label>Number of Pages</label>
-                <input>
-                <label>Have you read the book?</label>
-                <input>
-                <button></button>
-                <button></button>
+                <label for="titleB">Title of Book</label>
+                <input type="text" placeholder="Enter title of book" name="titleB" required>
+
+                <label for="nameA">Name of Author</label>
+                <input type="text" placeholder="Enter name of author" name="nameA" required>
+
+                <label for="NoP">Number of Pages</label>
+                <input type="text" placeholder="Enter the number of pages" name="NoP" required>
+
+                <label for="readB">Have you read the book?</label>
+                <input type="text" placeholder="Enter if you have read the book" name="readB" required>
+
+                <button type="submit" class="btn">Submit</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
             </form>
         </div>
     </div>
