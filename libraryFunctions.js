@@ -1,5 +1,13 @@
 const myLibrary = [];
 
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+    document.getElementById("myForm").style.display = "none"
+}
+
 function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
