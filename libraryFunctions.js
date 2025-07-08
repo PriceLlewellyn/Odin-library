@@ -21,12 +21,38 @@ function Book(title, author, pages, read) {
     };
 }
 
+
+document.addEventListener("DOMContentLoaded", () => {
+    const myForm = document.querySelector("#myForm");
+    myForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const formData = new FormData(myForm);
+        const data = {}
+        for (const [key, value] of formData.entries()) {
+            data[key] = value;
+        }
+        console.log(data);
+
+        const newBook = new book (
+            data.title,
+            data.author,
+            parseInt(data.pages),
+            data.read === "on"
+        )
+        myLibrary.push(newBook)
+        myForm.reset();
+        closeForm()
+    })
+})
+
+
+
+
+
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295 , false);
 console.log(theHobbit.info());
 
 myLibrary.push(theHobbit);
 console.log(myLibrary)
 
-//create event listner to capture form inputs
-//use them to create new book
-//display
+
