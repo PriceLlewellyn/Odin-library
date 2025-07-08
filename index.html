@@ -13,22 +13,36 @@
             <form class="form-container">
                 <p>New Book</p>
                 <label for="titleB">Title of Book</label>
-                <input type="text" placeholder="Enter title of book" name="titleB" required>
+                <input type="text" placeholder="Enter title of book" name="title" required>
 
                 <label for="nameA">Name of Author</label>
-                <input type="text" placeholder="Enter name of author" name="nameA" required>
+                <input type="text" placeholder="Enter name of author" name="Author" required>
 
                 <label for="NoP">Number of Pages</label>
-                <input type="text" placeholder="Enter the number of pages" name="NoP" required>
+                <input type="text" placeholder="Enter the number of pages" name="pages" required>
 
                 <label for="readB">Have you read the book?</label>
-                <input type="text" placeholder="Enter if you have read the book" name="readB" required>
+                <input type="text" placeholder="Enter if you have read the book" name="read" required>
 
                 <button type="submit" class="btn">Submit</button>
                 <button type="button" class="btn cancel" onclick="closeForm()">Cancel</button>
             </form>
         </div>
     </div>
+
+    <h2>Library</h2>
+    <table id="book-table" border="1">
+        <thread>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Pages</th>
+                <th>Read</th>
+            </tr>
+        </thread>
+        <tbody id="book-table-body">
+
+        </tbody>
     <script type="text/javascript" src="libraryFunctions.js"></script>
 </body>
 </html>
