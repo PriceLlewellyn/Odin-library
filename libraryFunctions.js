@@ -5,7 +5,7 @@ function openForm() {
 };
 
 function closeForm() {
-    document.getElementById("myForm").style.display = "none"
+    document.getElementById("myForm").style.display = "none";
 };
 
 
@@ -19,10 +19,46 @@ function Book(title, author, pages, read) {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${readstatus}`;
     };
 }
-const newBook = new Book(title, author, pages, read);
-myLibrary.push(newBook);
 
-        
+
+
+const form = document.getElementById("myForm");
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const pages = document.getElementById('pages').value;
+    const read = document.getElementById('read').checked;
+
+    const newBook = new Book(title, author, pages, read);
+    myLibrary.push(newBook);
+
+    renderBooks();
+    closeForm();
+    form.reset();
+
+})
+
+const bookTable = document.querySelector("#book-table")
+
+function renderBooks() {
+    bookTable.innerHTML = "";
+
+    myLibrary.forEach((book) => {
+        const row = document.createElement("tr");
+        row.innerHTML += ` 
+            <td>${book.title}</td>
+            <td>${book.author}</td>
+            <td>${book.pages}</td>
+            <td>${book.read? "yes" : "no"}</td>
+        `;
+            
+        bookTable.appendChild(row);
+    });
+}
+
 
 
 
@@ -34,26 +70,7 @@ myLibrary.push(theHobbit)
 //x.value = what you want
 
 /*
-Write a Function to Add a Book
-This function should accept form values (title, author, pages, read).
 
-It should create a new Book and add it to the library array.
-
-6. Display the Books
-Write a function to loop through your library array.
-
-For each book, create a DOM element (like a card or a table row).
-
-Show the book’s title, author, pages, and read status.
-
-7. Handle Form Submission
-Use an event listener on the form’s submit event.
-
-Prevent the default behavior with event.preventDefault().
-
-Get values from the form and call your function to add a book.
-
-Reset and hide the form after submission.
 
 8. Toggle Form Visibility
 When the “New Book” button is clicked, toggle visibility of the form.
