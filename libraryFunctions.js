@@ -24,6 +24,9 @@ function Book(title, author, pages, read) {
 
 const form = document.getElementById("myForm");
 
+const bookTable = document.querySelector("#book-table")
+
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -41,50 +44,37 @@ form.addEventListener('submit', function(event) {
 
 })
 
-const bookTable = document.querySelector("#book-table")
-
 function renderBooks() {
     bookTable.innerHTML = "";
 
-    myLibrary.forEach((book) => {
+    myLibrary.forEach((book, index) => {
         const row = document.createElement("tr");
-        row.innerHTML += ` 
+
+        row.innerHTML = ` 
             <td>${book.title}</td>
             <td>${book.author}</td>
             <td>${book.pages}</td>
             <td>${book.read? "yes" : "no"}</td>
+            <td><button class="delete-button" 
+                        data-index="${index}">Delete</button></td>
         `;
             
         bookTable.appendChild(row);
     });
 }
 
-
+bookTable.addEventListener("click", (e) => {
+    if (e.target.matches(".delete-button")) {
+        const idx = e.target.dataset.index;
+        myLibrary.splice(idx, 1);
+        renderBooks();
+    }
+});
 
 
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295 , false);
 myLibrary.push(theHobbit)
 
-//Notes:
-// x = document.getElementById("ID GOES IN HERE") https://developer.mozilla.org/en-US/docs/Web/API/Document/getElementById
-//x.value = what you want
-
-/*
 
 
-8. Toggle Form Visibility
-When the “New Book” button is clicked, toggle visibility of the form.
-
-9. Add Buttons for Each Book
-Each book should have:
-
-A “Remove” button to delete it from the array and re-render.
-
-A “Toggle Read” button to switch its read status and re-render.
-
-10. Update the Display Dynamically
-After adding, removing, or toggling a book, update the DOM.
-
-Clear the book display container and re-loop through the array to show updated books.
-*/
 
